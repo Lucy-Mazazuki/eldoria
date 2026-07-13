@@ -1,0 +1,91 @@
+---
+import Layout from "../layout/Layout.astro";
+import Button from "../components/ui/Button.astro";
+---
+
+<Layout>
+
+<main class="read-page">
+
+<h1>Begin Your Journey</h1>
+
+<p>
+
+Choose where you'd like to experience Eldoria.
+
+</p>
+
+<div class="buttons">
+
+<Button href="https://tapas.io/series/Eldoria-A-World-Divided/info">
+
+Read on Tapas 
+
+</Button>
+
+<Button
+href="https://www.royalroad.com/fiction/178361/eldoria-a-divided-world"
+variant="secondary">
+
+Royal Road
+
+</Button>
+
+<Button
+href="https://www.scribblehub.com/series/2429970/eldoria-a-divided-world-book-one/"
+variant="secondary">
+
+Scribble Hub
+
+</Button>
+
+<Button
+href="https://www.wattpad.com/story/413312348-eldoria-a-world-divided-book-one"
+variant="secondary">
+
+Wattpad
+
+</Button>
+
+
+</div>
+
+</main>
+
+<style>
+
+.read-page{
+
+min-height:100vh;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
+
+align-items:center;
+
+text-align:center;
+
+padding:2rem;
+
+}
+
+.buttons{
+
+display:flex;
+
+gap:1.5rem;
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+margin-top:3rem;
+
+}
+
+</style>
+
+</Layout>
