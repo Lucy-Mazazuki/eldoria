@@ -1,6 +1,42 @@
+---
+const pathname = Astro.url.pathname;
+
+const links = [
+
+    {
+        href:"/world",
+        label:"Atlas"
+    },
+
+    {
+        href:"/read",
+        label:"Read"
+    },
+
+    {
+        href:"/codex",
+        label:"Codex"
+    },
+
+    {
+        href:"/lore",
+        label:"Lore"
+    },
+
+    {
+        href:"/community",
+        label:"Community"
+    }
+
+];
+---
+
 <nav class="navbar">
 
-    <a href="/" class="logo">
+    <a
+        href="/"
+        class={`logo ${pathname === "/" ? "active-logo" : ""}`}
+    >
 
         ELDORIA
 
@@ -8,15 +44,25 @@
 
     <div class="nav-links">
 
-        <a href="/world">Atlas</a>
+        {
 
-        <a href="/read">Read</a>
+            links.map((link)=>(
 
-        <a href="/codex">Codex</a>
+                <a
 
-        <a href="/lore">Lore</a>
+                    href={link.href}
 
-        <a href="/community">Community</a>
+                    class={pathname.startsWith(link.href) ? "active" : ""}
+
+                >
+
+                    {link.label}
+
+                </a>
+
+            ))
+
+        }
 
     </div>
 
@@ -55,7 +101,9 @@
         border-color .35s ease,
 
         box-shadow .35s ease;
+
 }
+
 .navbar.scrolled{
 
     background:rgba(10,9,8,.88);
@@ -71,6 +119,7 @@
     padding:1.25rem 6rem;
 
 }
+
 .logo{
 
     font-family:"Cinzel",serif;
@@ -93,6 +142,12 @@
 
 }
 
+.active-logo{
+
+    color:var(--primary-light);
+
+}
+
 .nav-links{
 
     display:flex;
@@ -106,6 +161,8 @@
     position:relative;
 
     color:var(--text);
+
+    text-decoration:none;
 
     font-size:.9rem;
 
@@ -149,27 +206,45 @@
 
 }
 
+.nav-links a.active{
+
+    color:var(--primary);
+
+}
+
+.nav-links a.active::after{
+
+    width:100%;
+
+}
+
 @media(max-width:900px){
 
-.navbar{
+    .navbar{
 
-    padding:2rem;
+        padding:2rem;
 
-    flex-direction:column;
+        flex-direction:column;
 
-    gap:1.5rem;
+        gap:1.5rem;
 
-}
+    }
 
-.nav-links{
+    .navbar.scrolled{
 
-    gap:1.25rem;
+        padding:1.5rem 2rem;
 
-    flex-wrap:wrap;
+    }
 
-    justify-content:center;
+    .nav-links{
 
-}
+        gap:1.25rem;
+
+        flex-wrap:wrap;
+
+        justify-content:center;
+
+    }
 
 }
 
