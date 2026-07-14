@@ -4,35 +4,209 @@ import Navbar from "../layout/Navbar.astro";
 import "../styles/global.css";
 
 interface Props {
-  title?: string;
-  description?: string;
+
+    title?: string;
+    description?: string;
+    image?: string;
+    canonical?: string;
+
 }
 
 const {
-  title = "Eldoria: A Divided World",
-  description = "Enter the world of Eldoria."
+
+    title = "Eldoria: A Divided World",
+
+    description = "Explore Eldoria, a vast fantasy world of ancient kingdoms, divine Specters, powerful magic, and unforgettable heroes.",
+
+    image = "/images/og-cover.webp",
+
+    canonical = Astro.url.href
+
 } = Astro.props;
+
+const site = "https://eldoriaworld.site";
 ---
 
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content={description} />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link
-  href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
-  rel="stylesheet">
-  <title>{title}</title>
+    <meta charset="UTF-8" />
+
+    <meta
+
+        name="viewport"
+
+        content="width=device-width, initial-scale=1"
+
+    />
+
+    <title>{title}</title>
+
+    <meta
+
+        name="description"
+
+        content={description}
+
+    />
+
+    <meta
+
+        name="robots"
+
+        content="index, follow"
+
+    />
+
+    <meta
+
+        name="theme-color"
+
+        content="#050505"
+
+    />
+
+    <link
+
+        rel="canonical"
+
+        href={canonical}
+
+    />
+
+    <link
+
+        rel="icon"
+
+        type="image/png"
+
+        href="/favicon.png"
+
+    />
+
+    <link
+
+        rel="apple-touch-icon"
+
+        href="/apple-touch-icon.png"
+
+    />
+
+    <!-- Open Graph -->
+
+    <meta
+
+        property="og:type"
+
+        content="website"
+
+    />
+
+    <meta
+
+        property="og:title"
+
+        content={title}
+
+    />
+
+    <meta
+
+        property="og:description"
+
+        content={description}
+
+    />
+
+    <meta
+
+        property="og:image"
+
+        content={`${site}${image}`}
+
+    />
+
+    <meta
+
+        property="og:url"
+
+        content={canonical}
+
+    />
+
+    <meta
+
+        property="og:site_name"
+
+        content="Eldoria"
+
+    />
+
+    <!-- Twitter / Bluesky -->
+
+    <meta
+
+        name="twitter:card"
+
+        content="summary_large_image"
+
+    />
+
+    <meta
+
+        name="twitter:title"
+
+        content={title}
+
+    />
+
+    <meta
+
+        name="twitter:description"
+
+        content={description}
+
+    />
+
+    <meta
+
+        name="twitter:image"
+
+        content={`${site}${image}`}
+
+    />
+
+    <link
+
+        rel="preconnect"
+
+        href="https://fonts.googleapis.com"
+
+    />
+
+    <link
+
+        rel="preconnect"
+
+        href="https://fonts.gstatic.com"
+
+        crossorigin
+
+    />
+
+    <link
+
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+
+        rel="stylesheet"
+
+    />
+
 </head>
-<script type="module">
 
-import "/src/scripts/reveal.js";
-
-</script>
 <body>
 
     <Navbar />
@@ -40,24 +214,31 @@ import "/src/scripts/reveal.js";
     <slot />
 
     <Footer />
+
     <script type="module">
 
-const navbar = document.querySelector(".navbar");
+        import "/src/scripts/reveal.js";
 
-window.addEventListener("scroll", () => {
+        const navbar = document.querySelector(".navbar");
 
-    if (window.scrollY > 80) {
+        window.addEventListener("scroll", () => {
 
-        navbar?.classList.add("scrolled");
+            if (window.scrollY > 80) {
 
-    } else {
+                navbar?.classList.add("scrolled");
 
-        navbar?.classList.remove("scrolled");
+            }
 
-    }
+            else {
 
-});
+                navbar?.classList.remove("scrolled");
 
-</script>
+            }
+
+        });
+
+    </script>
+
 </body>
+
 </html>
